@@ -141,8 +141,29 @@ while True:
     inputs = input('Seleccione una opción para continuar\n')
 
     if int(inputs[0]) == 1:
+        correct = True
+        while correct:
+            print(
+                'Ingrese el tipo de mapa a utilizar. Digite 1 si desea' +
+                ' PROBING, digite 2 si desea CHAINING.')
+            map_type_inp = int(input(''))
+            if map_type_inp == 1:
+                map_type = 'PROBING'
+                correct = False
+                break
+            elif map_type_inp == 2:
+                map_type = 'CHAINING'
+                correct = False
+                break
+            else:
+                print('Digite un número válido.')
+        print('Ingrese el factor de carga.')
+        load_factor = float(
+            input(
+                '(utilice el punto como separador decimal): '
+                ))
         print("Inicializando Catálogo ....")
-        cont = controller.initCatalog()
+        cont = controller.initCatalog(map_type, load_factor)
 
     elif int(inputs[0]) == 2:
         # TODO: modificaciones para observar el tiempo y memoria
